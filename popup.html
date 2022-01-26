@@ -5,37 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compass Companion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
-    <style>
-        html, body {
-            background-color: #f78f1e;
-            background-color: #009ddc;
-            background-color: #00a8e4;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            margin: 10px;
-            min-height: 225px;
-            padding: 0;
-            width: 450px;
-        }
-
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 30px;
-            font-weight: 500;
-            margin: 0;
-            color: white;
-        }
-        
-        .version {
-            font-size: 15px;
-        }
-        .logo-icon {
-            padding: 0px;
-            height: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
@@ -46,15 +19,17 @@
             <span class="version">v1.0.0</span>
         </h1>
     </div>
+    <br>
     <div class="links">
-        <button class="links-btn btn" id="site-btn">Home</button>
-        <button class="links-btn btn" id="upass-btn">Load UPass</button>
-        <button class="links-btn btn" id="third-btn">Placeholder</button>
+        <button class="links-btn btn btn-outline-light" id="home-btn">Home</button>
+        <button class="links-btn btn btn-outline-light" id="upass-btn">Load UPass</button>
+        <button class="links-btn btn btn-outline-light" id="check-btn">Check Balance</button>
     </div>
+    <!-- <br>
     <div class="balance">
         <button class="bal-btn btn" id="balance-btn">Check Balance</button>
         <label for="balance-btn">$0.00</label>
-    </div>
+    </div> -->
 
     <script src="popup.js"></script>
 </body>
