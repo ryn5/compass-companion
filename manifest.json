@@ -10,5 +10,5 @@
         "default_icon": "images/blue.jpeg",
         "default_popup": "popup.html"
     },
-    "permissions": ["activeTab"]
+    "permissions": ["activeTab", "storage"]
 }
