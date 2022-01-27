@@ -14,3 +14,9 @@ const upassButton = document.querySelector('#upass-btn');
 
 upassButton.addEventListener('click', () => {
     // window.open('https://upassbc.translink.ca/');
+    const date = new Date();
+    const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const dateFormat = date.toLocaleString('en-US', options);
+    const str = 'Last updated: ' + dateFormat;
+    document.getElementById('updated-text').innerHTML = str;
+});
