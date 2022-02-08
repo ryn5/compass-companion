@@ -1,8 +1,8 @@
 chrome.runtime.onMessage.addListener((message, sender, callback) => {
-    console.log('Received message: ' + message.data);
+    console.log('Received message: ' + message.msg);
     callback({ greeting: "Calling back from background.js" });
 
-    if (message.data === 'notif') {
+    if (message.msg === 'notif') {
         const opt = {
             type: 'basic',
             title: 'UPass Reminder',
