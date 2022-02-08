@@ -3,10 +3,7 @@ function setup() {
         document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
     }
     
-    // const date = Date() something;
-    // if (date.getDay() > 16 && localStorage['month'] === date.getMonth()) {
-    //     sendmessage
-    // }
+    reminder();
 
 
     const homeButton = document.querySelector('#home-btn');
@@ -20,7 +17,7 @@ function setup() {
     const checkButton = document.querySelector('#check-btn');
 
     checkButton.addEventListener('click', () => {
-        chrome.runtime.sendMessage({ data: "notif", hello: 'yes' }, function (response) {
+        chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) { // still has data instead of msg
             console.log("Response received in popup.js");
         });
 
@@ -42,9 +39,20 @@ function updateText() {
     const str = 'Last updated: ' + dateFormat;
     document.getElementById('updated-text').innerHTML = str;
     localStorage['updated-text'] = str;
-    localStorage['month'] = date.getMonth();
+    localStorage['month'] = date.getMonth() + 1; // updates month for reminder
 }
-
+// try without this
 document.addEventListener('DOMContentLoaded', function () {
     setup();
 });
+
+function reminder() {
+    const date = new Date();
+    if (date.getDay() > 16 && localStorage['month'] === date.getMonth()) {
+        chrome.runtime.sendMessage({msg: 'notif'}, function (response) { // try sending msg as plain string
+            console.log(response);
+        });
+    }
+}
+
+// implemented reminder, just needs compiling/testing
