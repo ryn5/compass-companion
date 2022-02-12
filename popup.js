@@ -11,7 +11,7 @@ homeButton.addEventListener('click', () => {
 const checkButton = document.querySelector('#check-btn');
 checkButton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
-        console.log('Response received in popup.js');
+        console.log('Response received in popup.js!!!!');
     });
 
 });
