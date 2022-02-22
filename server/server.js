@@ -17,7 +17,7 @@ app.get('/upass/', (req, res) => {
 });
 
 app.get('/balance/', (req, res) => {
-  // start puppeteer browser
+  pupBalance();
   res.send('Received request for balance');
 });
 
@@ -26,6 +26,9 @@ app.listen(port, () => {
   // TODO: create a puppeteer object here?
 })
 
+async function pupBalance() {
+
+}
 
 async function selUpass() {
     const {Builder, By, Key, until} = require('selenium-webdriver');
