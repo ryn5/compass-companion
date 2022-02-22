@@ -22,6 +22,8 @@ module.exports = {
       patterns: [
         { from: 'manifest.json' },
         { from: 'images/blue.jpeg' },
+        { from: 'images/orange.jpeg' },
+        { from: 'images/logo.png' }
       ],
     }),
   ],
