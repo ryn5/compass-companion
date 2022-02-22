@@ -1,3 +1,8 @@
+// async function example () {
+//     const desc = await fetch('http://localhost:3000/hellotest');
+//     return desc;
+// }
+
 if (localStorage['updated-text']) {
     document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
 }
@@ -11,14 +16,14 @@ homeButton.addEventListener('click', () => {
 const checkButton = document.querySelector('#check-btn');
 checkButton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
-        console.log('Response received in popup.js');
+        console.log('Response received in popup.js!!!!');
     });
 
 });
 
 const upassButton = document.querySelector('#upass-btn');
 upassButton.addEventListener('click', () => {
-    window.open('https://upassbc.translink.ca/');
+    fetch('http://localhost:3000/upass');
     updateText();
 });
 
