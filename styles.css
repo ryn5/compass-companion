@@ -3,7 +3,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     color: white;
-    margin: 20px;
+    margin: 15px;
     min-height: 225px;
     padding: 0;
     width: 450px;
@@ -38,4 +38,10 @@ h1 {
 
 button {
     border-radius: 15px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    font-size: 10px;
 }
