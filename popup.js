@@ -23,7 +23,7 @@ checkButton.addEventListener('click', () => {
 
 const upassButton = document.querySelector('#upass-btn');
 upassButton.addEventListener('click', () => {
-    window.open('https://upassbc.translink.ca/');
+    fetch('http://localhost:3000/upass');
     updateText();
 });
 
