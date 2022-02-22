@@ -1,7 +1,7 @@
-async function example () {
-    const desc = await fetch('http://localhost:3000/hellotest');
-    return desc;
-}
+// async function example () {
+//     const desc = await fetch('http://localhost:3000/hellotest');
+//     return desc;
+// }
 
 if (localStorage['updated-text']) {
     document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
@@ -32,10 +32,8 @@ function updateText() {
     const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     const dateFormat = date.toLocaleString('en-US', options);
     const str = 'Last updated: ' + dateFormat;
-    // document.getElementById('updated-text').innerHTML = str;
-    document.getElementById('updated-text').innerHTML = desc;
-    // localStorage['updated-text'] = str;
-    localStorage['updated-text'] = desc;
+    document.getElementById('updated-text').innerHTML = str;
+    localStorage['updated-text'] = str;
     localStorage['month'] = date.getMonth() + 1; // updates month for reminder
 }
 
