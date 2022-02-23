@@ -27,7 +27,21 @@ app.listen(port, () => {
 })
 
 async function pupBalance() {
+  const puppeteer = require('puppeteer');
+  const browser = await puppeteer.launch({ headless: false }); // true by default
+  const page = await browser.newPage();
+  await page.goto('https://compasscard.ca/');
 
+  // sign in
+  page.click('#Content_lbSignIn');
+  await page.waitForNavigation();
+  await page.type('#Content_emailInfo_txtEmail', process.env.COMPASS_EMAIL); // await prevents both being entered into password
+  await sleep(1000).then(() => { page.type('#Content_passwordInfo_txtPassword', process.env.COMPASS_PASSWORD); });
+  sleep(1000).then(() => { page.click('#Content_btnSignIn'); });
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function selUpass() {
