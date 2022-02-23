@@ -1,22 +1,23 @@
-// async function example () {
-//     const desc = await fetch('http://localhost:3000/hellotest');
-//     return desc;
-// }
-
 if (localStorage['updated-text']) {
     document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
 }
 
 const homeButton = document.querySelector('#home-btn');
 homeButton.addEventListener('click', () => {
-    window.open('https://www.compasscard.ca/');
+    // window.open('https://www.compasscard.ca/');
+
+    chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
+        console.log('Response received in popup.js!!!!');
+    });
 
 });
 
 const checkButton = document.querySelector('#check-btn');
-checkButton.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
-        console.log('Response received in popup.js!!!!');
+checkButton.addEventListener('click', async () => {
+    document.getElementById('balance-text').innerHTML = ('Fetching balance...');
+    const response = await fetch('http://localhost:3000/balance');
+    response.text().then((res) => {
+        document.getElementById('balance-text').innerHTML = ('Balance: ' + res);
     });
 
 });
