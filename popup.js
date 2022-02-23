@@ -14,9 +14,12 @@ homeButton.addEventListener('click', () => {
 
 const checkButton = document.querySelector('#check-btn');
 checkButton.addEventListener('click', async () => {
-    const response = await fetch('http://localhost:3000/balance', { mode: 'no-cors' });
-    const newBalance = await response.text();
-    document.getElementById('balance-text').innerHTML = ('Balance: $' + newBalance);
+    document.getElementById('balance-text').innerHTML = ('Fetching balance...');
+    const response = await fetch('http://localhost:3000/balance');
+    response.text().then((res) => {
+        document.getElementById('balance-text').innerHTML = ('Balance: ' + res);
+    });
+
 });
 
 const upassButton = document.querySelector('#upass-btn');
