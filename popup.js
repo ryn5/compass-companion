@@ -32,7 +32,7 @@ function updateText() {
     const date = new Date();
     const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     const dateFormat = date.toLocaleString('en-US', options);
-    const str = 'Last updated: ' + dateFormat;
+    const str = 'UPass last updated: ' + dateFormat;
     document.getElementById('updated-text').innerHTML = str;
     localStorage['updated-text'] = str;
     localStorage['month'] = date.getMonth() + 1; // updates month for reminder
