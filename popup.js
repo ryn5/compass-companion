@@ -1,8 +1,3 @@
-// async function example () {
-//     const desc = await fetch('http://localhost:3000/hellotest');
-//     return desc;
-// }
-
 if (localStorage['updated-text']) {
     document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
 }
