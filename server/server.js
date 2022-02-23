@@ -44,8 +44,8 @@ async function selUpass() {
 
     // login to school portal
     await driver.wait(until.elementLocated(By.id('username')), 10000);
-    driver.findElement(By.id('username')).sendKeys(process.env.USERNAME);
-    driver.findElement(By.id('password')).sendKeys(process.env.PASSWORD);
+    driver.findElement(By.id('username')).sendKeys(process.env.SCHOOL_USERNAME);
+    driver.findElement(By.id('password')).sendKeys(process.env.SCHOOL_PASSWORD);
     
     // click submit
     const school = process.env.SCHOOL;

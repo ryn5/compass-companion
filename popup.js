@@ -9,16 +9,19 @@ if (localStorage['updated-text']) {
 
 const homeButton = document.querySelector('#home-btn');
 homeButton.addEventListener('click', () => {
-    window.open('https://www.compasscard.ca/');
+    // window.open('https://www.compasscard.ca/');
 
-});
-
-const checkButton = document.querySelector('#check-btn');
-checkButton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
         console.log('Response received in popup.js!!!!');
     });
 
+});
+
+const checkButton = document.querySelector('#check-btn');
+checkButton.addEventListener('click', async () => {
+    const response = await fetch('http://localhost:3000/balance', { mode: 'no-cors' });
+    const newBalance = await response.text();
+    document.getElementById('balance-text').innerHTML = ('Balance: $' + newBalance);
 });
 
 const upassButton = document.querySelector('#upass-btn');
