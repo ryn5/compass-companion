@@ -30,7 +30,7 @@ app.listen(port, () => {
 
 async function pupBalance() {
   const puppeteer = require('puppeteer');
-  const browser = await puppeteer.launch({ headless: false }); // true by default
+  const browser = await puppeteer.launch({ headless: true }); // true by default
   const page = await browser.newPage();
   await page.goto('https://compasscard.ca/');
 
@@ -38,16 +38,15 @@ async function pupBalance() {
   page.click('#Content_lbSignIn');
   await page.waitForNavigation();
   await page.type('#Content_emailInfo_txtEmail', process.env.COMPASS_EMAIL); // await prevents both being entered into password
-  await sleep(500).then(() => { page.type('#Content_passwordInfo_txtPassword', process.env.COMPASS_PASSWORD); });
-  sleep(500).then(() => { page.click('#Content_btnSignIn'); });
+  await sleep(100).then(() => { page.type('#Content_passwordInfo_txtPassword', process.env.COMPASS_PASSWORD); });
+  sleep(100).then(() => { page.click('#Content_btnSignIn'); });
   
   // get value
   const element = await page.waitForSelector('#Content_pnlCardDetails > div > div > div.block.stored-values > div.stored-value > div.value-block > div.value-text > span');
   const newBalance = await element.evaluate(e => e.textContent);
-  const fkcors = newBalance;
-  console.log(newBalance);
-  console.log(fkcors);
-  return fkcors;
+
+  await browser.close();
+  return newBalance;
 
 
 }
@@ -82,7 +81,7 @@ async function selUpass() {
     }
 
     // check and request
-    await driver.wait(until.elementLocated(By.id('chk_1')), 10000); //.catch(driver.quit());
+    await driver.wait(until.elementLocated(By.id('chk_1')), 10000); // .catch(driver.quit()); still crashes
     driver.findElement(By.id('chk_1')).click();
     driver.findElement(By.id('requestButton')).click();
     
