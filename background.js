@@ -1,29 +1,30 @@
-chrome.runtime.onMessage.addListener((message, sender, callback) => {
-    console.log('Received message: ' + message.msg);
-    callback({ greeting: "Calling back from background.js" });
 
-    if (message.msg === 'notif') {
-        const opt = {
-            type: 'basic',
-            title: 'UPass Reminder',
-            message: 'It\'s time to renew your UPass!',
-            priority: 1,
-            iconUrl: 'images/logo.png'
+chrome.runtime.onStartup.addListener(() => { reminder() });
 
-        };
-        chrome.notifications.create('reminder-notif', opt, function (id) {});
-    }
-});
-
-chrome.runtime.onStartup.addListener(function() {
-    reminder();
-});
+function sendNotif() {
+    const opt = {
+        type: 'basic',
+        title: 'UPass Reminder',
+        message: 'It\'s time to renew your U-Pass!',
+        priority: 1,
+        iconUrl: 'images/logo.png'
+    };
+    chrome.notifications.create('reminder-notif', opt, function (id) {});
+}
 
 function reminder() {
-    const date = new Date();
-    // if (date.getDay() > 5 && localStorage['month'] === date.getMonth()) { // try with today's date and reopen chrome
-        chrome.runtime.sendMessage({msg: 'notif'}, function (response) { // try sending msg as plain string
-            console.log(response);
-        });
+    // const date = new Date();
+    // console.log(date.getDate() + ' ' + date.getMonth() + localStorage['updated-text']);
+    // if (date.getDate() > 23 && (!localStorage['month'] || localStorage['month'] != date.getMonth())) {
+        sendNotif();
     // }
 }
+
+// notification test
+chrome.runtime.onMessage.addListener((message, callback) => {
+    console.log('Received message: ' + message.msg);
+    callback({ greeting: "Calling back from background.js" });
+    if (message.msg === 'notif') {
+        sendNotif();
+    }
+});
