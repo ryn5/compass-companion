@@ -4,11 +4,12 @@ if (localStorage['updated-text']) {
 
 const homeButton = document.querySelector('#home-btn');
 homeButton.addEventListener('click', () => {
-    // window.open('https://www.compasscard.ca/');
+    window.open('https://www.compasscard.ca/');
 
-    chrome.runtime.sendMessage({ msg: "notif", hello: 'yes' }, function (response) {
-        console.log('Response received in popup.js!!!!');
-    });
+    // // notification test
+    // chrome.runtime.sendMessage({ msg: "notif" }, function (response) {
+    //     console.log('Response received in popup.js!');
+    // });
 
 });
 
@@ -35,14 +36,5 @@ function updateText() {
     const str = 'U-Pass last loaded: ' + dateFormat;
     document.getElementById('updated-text').innerHTML = str;
     localStorage['updated-text'] = str;
-    localStorage['month'] = date.getMonth() + 1; // updates month for reminder
-}
-
-function reminder() {
-    const date = new Date();
-    // if (date.getDay() > 5 && localStorage['month'] === date.getMonth()) { // try with today's date and reopen chrome
-        chrome.runtime.sendMessage({msg: 'notif'}, function (response) { // try sending msg as plain string
-            console.log(response);
-        });
-    // }
+    if (date.getDate() >= 16) localStorage['month'] = date.getMonth(); // updates month for reminder check
 }
