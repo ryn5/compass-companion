@@ -5,12 +5,7 @@ if (localStorage['updated-text']) {
 const homeButton = document.querySelector('#home-btn');
 homeButton.addEventListener('click', () => {
     window.open('https://www.compasscard.ca/');
-
-    // // notification test
-    // chrome.runtime.sendMessage({ msg: "notif" }, function (response) {
-    //     console.log('Response received in popup.js!');
-    // });
-
+    // chrome.runtime.sendMessage({ msg: 'notif' }); // notification test
 });
 
 const checkButton = document.querySelector('#check-btn');
