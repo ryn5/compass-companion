@@ -1,5 +1,22 @@
-if (localStorage['updated-text']) {
-    document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
+function init() {
+    if (localStorage['updated-text']) {
+        document.getElementById('updated-text').innerHTML = localStorage['updated-text'];
+    }
+    
+    const date = new Date();
+    // request notif if date is 16th+ and if first startup or if U-Pass hasn't been loaded
+    if (date.getDate() > 15 && (!localStorage['month'] || localStorage['month'] != date.getMonth())) {
+        reqNotif();
+    }
+}
+
+init();
+
+// request background script to send a notification
+function reqNotif() {
+    chrome.runtime.sendMessage({ msg: "notif" }, function (response) {
+        console.log('Response received in popup.js!');
+    });
 }
 
 const homeButton = document.querySelector('#home-btn');
