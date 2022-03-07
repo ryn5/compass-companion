@@ -1,7 +1,7 @@
-
 // // send notification on startup
 // chrome.runtime.onStartup.addListener(() => { reminder() });
 
+// create and send notification
 function sendNotif() {
     const opt = {
         type: 'basic',
@@ -13,7 +13,7 @@ function sendNotif() {
     chrome.notifications.create('reminder-notif', opt, function (id) {});
 }
 
-// notification request
+// answer notification request
 chrome.runtime.onMessage.addListener((message) => {
     console.log('Received message: ' + message.msg);
     if (message.msg === 'notif') {
