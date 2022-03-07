@@ -32,7 +32,6 @@ checkButton.addEventListener('click', async () => {
     response.text().then((res) => {
         document.getElementById('balance-text').innerHTML = ('Balance: ' + res);
     });
-
 });
 
 const upassButton = document.querySelector('#upass-btn');
