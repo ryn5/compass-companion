@@ -1,2 +1,2 @@
-# compass-companion
+# Compass Companion
 Compass chrome extension
